@@ -1,22 +1,22 @@
 ######### NORMAL OPERATION  ###########
 
-### Read all pizzas
-GET http://localhost:3000/pizzas
+### Read all reponses
+GET http://localhost:3000/reponses
 
-### Read all pizzas with File variable
+### Read all reponses with File variable
 @baseUrl = http://localhost:3000
-GET {{baseUrl}}/pizzas
+GET {{baseUrl}}/reponses
 
-### Read all pizzas sorted by title (ascending)
-GET {{baseUrl}}/pizzas/?order=+title
+### Read all reponses sorted by title (ascending)
+GET {{baseUrl}}/reponses/?order=+title
 
-### Read all pizzas sorted by title (descending)
-GET {{baseUrl}}/pizzas/?order=-title
+### Read all reponses sorted by title (descending)
+GET {{baseUrl}}/reponses/?order=-title
 
-### Read pizza identified by 2
-GET {{baseUrl}}/pizzas/2
+### Read reponse identified by 2
+GET {{baseUrl}}/reponses/2
 
-### Create a pizza by using the admin account
+### Create a reponse by using the admin account
 #### First login as the admin
 ##### Define a request variable nammed admin :
 # @name admin
@@ -28,8 +28,8 @@ Content-Type: application/json
     "password":"admin"
 }
 
-#### Create a pizza with the admin token
-POST {{baseUrl}}/pizzas
+#### Create a reponse with the admin token
+POST {{baseUrl}}/reponses
 Content-Type: application/json
 Authorization: {{admin.response.body.token}}
 
@@ -38,12 +38,12 @@ Authorization: {{admin.response.body.token}}
     "content":"Epinards, Brocolis, Olives vertes, Basilic"
 }
 
-### Delete pizza identified by 2 with the admin token
-DELETE {{baseUrl}}/pizzas/2
+### Delete reponse identified by 2 with the admin token
+DELETE {{baseUrl}}/reponses/2
 Authorization: {{admin.response.body.token}}
 
-### Update the pizza identified by 6 with the admin token
-PATCH {{baseUrl}}/pizzas/6
+### Update the reponse identified by 6 with the admin token
+PATCH {{baseUrl}}/reponses/6
 Content-Type: application/json
 Authorization: {{admin.response.body.token}}
 
@@ -56,14 +56,14 @@ Authorization: {{admin.response.body.token}}
 
 ######### ERROR OPERATION  ###########
 
-### Read the pizza error
-GET {{baseUrl}}/pizzas/error
+### Read the reponse error
+GET {{baseUrl}}/reponses/error
 
-### Read pizza which does not exists
-GET {{baseUrl}}/pizzas/100
+### Read reponse which does not exists
+GET {{baseUrl}}/reponses/100
 
-### 1. Create a pizza without a token
-POST {{baseUrl}}/pizzas
+### 1. Create a reponse without a token
+POST {{baseUrl}}/reponses
 Content-Type: application/json
 
 {
@@ -71,7 +71,7 @@ Content-Type: application/json
     "content":"Epinards, Brocolis, Olives vertes, Basilic"
 }
 
-### 2. Create a pizza without being the admin, use manager account
+### 2. Create a reponse without being the admin, use manager account
 #### 2.1 First login as the manager
 ##### 2.1.1 Define a request variable nammed manager
 # @name manager
@@ -86,8 +86,8 @@ Content-Type: application/json
 ##### 2.1.2 Define a file variable to simplify the access to the token of manager
 @managerToken = {{manager.response.body.token}}
 
-#### 2.2 Try to create a pizza with the manager token
-POST {{baseUrl}}/pizzas
+#### 2.2 Try to create a reponse with the manager token
+POST {{baseUrl}}/reponses
 Content-Type: application/json
 Authorization: {{managerToken}}
 
@@ -96,16 +96,16 @@ Authorization: {{managerToken}}
     "content":"Epinards, Brocolis, Olives vertes, Basilic"
 }
 
-### Create a pizza which lacks a property
-POST {{baseUrl}}/pizzas
+### Create a reponse which lacks a property
+POST {{baseUrl}}/reponses
 Content-Type: application/json
 
 {
     "content":"Epinards, Brocolis, Olives vertes, Basilic"
 }
 
-### Create a pizza without info for a property
-POST {{baseUrl}}/pizzas
+### Create a reponse without info for a property
+POST {{baseUrl}}/reponses
 Content-Type: application/json
 
 {
@@ -113,16 +113,16 @@ Content-Type: application/json
     "content":"Epinards, Brocolis, Olives vertes, Basilic"
 }
 
-### Update for a pizza which does not exist
-PATCH {{baseUrl}}/pizzas/200
+### Update for a reponse which does not exist
+PATCH {{baseUrl}}/reponses/200
 Content-Type: application/json
 
 {
     "title":"Magic Green 2"
 }
 
-### Update for a pizza which does not provide any info for a property
-PATCH {{baseUrl}}/pizzas/1
+### Update for a reponse which does not provide any info for a property
+PATCH {{baseUrl}}/reponses/1
 Content-Type: application/json
 
 {

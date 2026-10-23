@@ -1,27 +1,14 @@
 import { Request } from "express";
 
-interface Pizza {
+interface Reponse {
   id: number;
-  title: string;
-  content: string;
+  question: string;
+  reponse: string;
 }
 
-interface PizzaToUpdate {
-  title?: string;
-  content?: string;
-}
 
-type NewPizza = Omit<Pizza, "id">;
+type NewReponse = Omit<Reponse, "id">;
 
-interface Drink {
-  id: number;
-  title: string;
-  image: string;
-  volume: number;
-  price: number;
-}
-
-type NewDrink = Omit<Drink, "id">;
 
 interface AuthenticatedUser {
   username: string;
@@ -47,11 +34,9 @@ interface JwtPayload {
 }
 
 export type {
-  Pizza,
-  NewPizza,
-  PizzaToUpdate,
-  Drink,
-  NewDrink,
+  Reponse,
+  NewReponse,
+ 
   AuthenticatedUser,
   User,
   PotentialUser,
